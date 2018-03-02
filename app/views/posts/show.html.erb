@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+  <strong>Created By:</strong>
+  <%= @post.user.email %>
+</p>
+<p>
+  <strong>Comments:</strong>
+    <% @post.comments.each do |comment| %>
+	   <p class="comment">
+         <sub>by <%=comment.user.email%></sub>
+         <br>
+         <%= comment.title %>
+         <br>
+         <%= comment.description %>
+         <%= link_to 'reply', nestedcomments_new_path(:id => comment.id), method: "get" %>
+    </p>
+     <% end %>
+</p>
+
+<!-- BUUTON = ADD COMMENT -->
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

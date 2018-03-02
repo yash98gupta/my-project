@@ -1,0 +1,10 @@
+<%= form_for @nc do |f| %>
+<input type="hidden" name="nestedcomment[id]" value= <%= @comment_id %> >
+<%=f.label :title %>
+<%=f.text_field :title %>
+<br>
+<%=f.label :description %>
+<%=f.text_field :description%>
+<br>
+<%= f.submit :submit %>
+<%end%>
